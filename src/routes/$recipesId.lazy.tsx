@@ -2,7 +2,7 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 
 
-export const Route = createLazyFileRoute('/$foodsId')({
+export const Route = createLazyFileRoute('/$recipesId')({
     component: Recipe,
 })
 
@@ -42,7 +42,7 @@ function Recipe() {
                             ))}
                         </ul>
                     </div>
-                    <div>
+                    <div className="mt-2">
                         <span className="mt-4">Intructions:</span>
                         <ul className="mt-2 list-disc list-inside">
                             {recipe.instructions.map((items, i) => (
@@ -50,6 +50,9 @@ function Recipe() {
                             ))}
                         </ul>
                     </div>
+                </div>
+                <div>
+                    { }
                 </div>
             </div>
         </>

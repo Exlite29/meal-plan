@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import style from './home.module.scss';
 import { useQuery } from '@tanstack/react-query';
-import { fetchRecipes } from '../../services/meals';
+import { fetchrecipes } from '../../services/meals';
 import Loader from '../../components/Loader';
 import { useEffect, useState } from 'react';
 
@@ -31,7 +31,7 @@ function Home() {
 
     const { data, error, isLoading } = useQuery({
         queryKey: ['recipes'],
-        queryFn: fetchRecipes,
+        queryFn: fetchrecipes,
     });
 
     const [meals, setMeals] = useState<Meals>({
@@ -86,38 +86,35 @@ function Home() {
 
     return (
         <div className={`${containerStyle} flex flex-col justify-center items-center`}>
-            <h1 className='font-medium text-black text-5xl'>Welcome to my meal plan</h1>
-            <div className='mt-4'>
+            <h1 className="font-medium text-black text-5xl">Welcome to my meal plan</h1>
+            <div className="mt-4">
                 <p>Your meals for today</p>
             </div>
             {meals.morning && meals.lunch && meals.dinner ? (
-                <>
-                    {MEAL_KEYS.map(mealType => {
+                <div className="flex flex-row space-x-8 mt-4">
+                    {MEAL_KEYS.map((mealType) => {
                         const meal = meals[mealType];
-                        return meal && (
-                            <div key={mealType}>
-                                <h2 className='grid grid-cols-1 justify-center font-medium text-black text-3xl'>{mealType}</h2>
-                                <img
-                                    onClick={() => navigate({ to: "/$foodsId", params: { foodsId: meal.id } })}
-                                    className='h-24 w-24 '
-                                    src={meal.image}
-                                    alt={meal.name}
-                                />
-                                <p>{meal.name}</p>
-                            </div>
+                        return (
+                            meal && (
+                                <div key={mealType} className="flex flex-col border-2 hover:shadow-md rounded p-30 items-center">
+                                    <h2 className="font-medium text-black text-3xl text-center">{mealType}</h2>
+                                    <img
+                                        onClick={() => navigate({ to: "/$recipesId", params: { recipesId: meal.id } })}
+                                        className="h-24 w-24 cursor-pointer"
+                                        src={meal.image}
+                                        alt={meal.name}
+                                    />
+                                    <p className="mt-2 text-center">{meal.name}</p>
+                                </div>
+                            )
                         );
                     })}
-                </>
+                </div>
             ) : (
                 <p>No recipes available</p>
             )}
-            {/* {pinoyItems.map((items, i) => (
-                <div key={i}>
-                    
-            </div>
-        ))} */}
-
         </div>
+
     );
 }
 

@@ -1,14 +1,14 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { NotFound } from "../components/NotFound";
 import Loader from "../components/Loader";
-import Recipe from "./$foodsId.lazy";
+import Recipe from './$recipesId.lazy'
 
-export const Route = createFileRoute('/$foodsId')({
+export const Route = createFileRoute('/$recipesId')({
     loader: async ({ params }) => {
-        const { foodsId } = params;
-        await new Promise((resolve) => setTimeout(resolve, 3000));
+        const { recipesId } = params;
+        await new Promise((resolve) => setTimeout(resolve, 1000));
 
-        const recipe = await fetch(`https://dummyjson.com/recipes/${foodsId}`)
+        const recipe = await fetch(`https://dummyjson.com/recipes/${recipesId}`)
             .then((res) => res.json())
             .catch(() => { throw notFound });
 
