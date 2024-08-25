@@ -10,6 +10,8 @@ interface RecipeData {
     recipe: {
         id: number;
         name: string;
+        image: string;
+        ingredients: string[]
     };
 }
 
@@ -23,9 +25,24 @@ function Recipe() {
     const { recipe } = loaderData;
 
     return (
-        <div>
-            <h1>{recipe.id} {recipe.name}</h1>
-        </div>
+        <>
+            <h1 className="flex justify-center mt-10 mb-2 font-bold">{recipe.name}</h1>
+            <div className="flex h-screen justify-center mt-20 gap-10">
+
+
+                <img className="h-1/2 left-0" src={recipe.image} alt={recipe.name} />
+
+                <div>
+
+                    <span className="mt-2">Ingredients:</span>
+                    <ul className="mt-2 list-disc list-inside">
+                        {recipe.ingredients.map((ingredient, i) => (
+                            <li key={i}>{ingredient}</li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </>
     )
 }
 

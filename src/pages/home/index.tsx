@@ -11,7 +11,3 @@ export const Route = createFileRoute('/')({
     },
 })
 
-
-// const newLocal = fetch('https://dummyjson.com/recipes')
-//     .then(res => res.json())
-//     .then(console.log);
