@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    li {
+        list-style: none;
+        gap: 2rem;
+    }
+
+    h1 {
+        padding-bottom: 4rem;
+    }
+
+    h2 {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    p {
+        font-weight: 400;
+        padding: 0 30rem 0 30rem;
+    }
+
+    img {
+        padding-top: 2rem;
+        height: 10rem;
+        width: 10rem;
+    }
+
+    .loader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full height to center vertically */
+        width: 100vw; /* Full width to center horizontally */
+        position: fixed; /* Ensure it stays in the center even when scrolling */
+        top: 0;
+        left: 0;
+    }
+}

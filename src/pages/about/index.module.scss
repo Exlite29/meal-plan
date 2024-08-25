@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    h1 {
+        padding-top: 5rem;
+        padding-bottom: 4rem;
+    }
+
+    p {
+        font-weight: 400;
+        padding: 0 30rem 0 30rem;
+    }
+}

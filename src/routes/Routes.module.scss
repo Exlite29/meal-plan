@@ -1,0 +1,34 @@
+// @use '../../styles/variables';
+.main {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    background-color: #213a57;
+    padding: 0;
+    margin: 0;
+}
+.container {
+    display: flex;
+    gap: 2rem;
+    padding-left: 10rem;
+    text-decoration: none;
+
+    p {
+        padding-top: 1.5rem;
+        font-size: x-large;
+        color: #80ed99;
+    }
+}
+
+.list {
+    display: flex;
+    padding-top: 2rem;
+    padding-right: 10rem;
+    gap: 2rem;
+
+    a {
+        color: #80ed99;
+        text-decoration: none;
+        font-size: large;
+    }
+}
