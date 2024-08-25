@@ -5,11 +5,11 @@ import Loader from '../components/Loader';
 import { useMemo, useState } from 'react';
 
 
-export const Route = createLazyFileRoute('/recipes')({
-  component: Recipes
+export const Route = createLazyFileRoute('/foods')({
+  component: Foods
 })
 
-function Recipes() {
+function Foods() {
   const navigate = useNavigate()
   const { data, error, isLoading } = useQuery({
     queryKey: ['recipes'],
@@ -39,7 +39,7 @@ function Recipes() {
           <li className='flex flex-col items-center' key={recipe.id}>
             <div className='flex justify-center'>
               <img
-                onClick={() => navigate({ from: '/recipes', to: '/$recipesId', params: { recipesId: recipe.id.toString() } })}
+                onClick={() => navigate({ from: '/foods', to: '/$foodsId', params: { foodsId: recipe.id.toString() } })}
                 src={recipe.image}
                 alt={recipe.name}
                 className='h-24 w-24 mt-10'
