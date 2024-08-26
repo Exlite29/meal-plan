@@ -8,6 +8,7 @@ export const Route = createLazyFileRoute('/recipes')({
   component: recipes,
 });
 
+
 function recipes() {
   const navigate = useNavigate();
   const { data, error, isLoading } = useQuery({
@@ -16,12 +17,10 @@ function recipes() {
   });
 
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
 
-  // Memoize the current page's recipes
   const currentrecipes = useMemo(() => {
     if (!data) return [];
-    // Assuming `data` is an object with a `recipes` array
     const recipesArray = Array.isArray(data) ? data : data.recipes || [];
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -33,28 +32,37 @@ function recipes() {
 
   return (
     <div>
-      <ul>
-        {currentrecipes.map((recipe: { id: number; name: string; image: string }) => (
-          <li className='flex flex-col items-center' key={recipe.id}>
-            <div className='flex justify-center'>
+      <ul className="grid grid-cols-5 gap-4">
+        {currentrecipes.map((recipe: { id: number; image: string; name: string }) => (
+          <li className="flex flex-col items-center" key={recipe.id}>
+
+            <div className="flex justify-center">
               <img
-                onClick={() => navigate({ from: '/recipes', to: '/$recipesId', params: { recipesId: recipe.id.toString() } })}
+                onClick={() =>
+                  navigate({
+                    from: '/recipes',
+                    to: '/$recipesId',
+                    params: { recipesId: recipe.id.toString() },
+                  })
+                }
                 src={recipe.image}
                 alt={recipe.name}
-                className='h-24 w-24 mt-10'
+                className="h-32 w-32 rounded-md mt-10"
               />
             </div>
-            <h1>{recipe.name}</h1>
+            <h1 className="mt-2">{recipe.name}</h1>
+
           </li>
         ))}
       </ul>
 
-      <div className='mt-10 flex justify-end gap-2'>
-        <button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={currentPage === 1}>
+
+      <div className='mt-10 flex justify-end gap-4'>
+        <button className='border rounded bg-[#213a57] text-white pl-2 pr-2' onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={currentPage === 1}>
           Previous
         </button>
         <span>{currentPage}</span>
-        <button onClick={() => setCurrentPage((prev) => (currentrecipes.length === itemsPerPage ? prev + 1 : prev))} disabled={currentrecipes.length < itemsPerPage}>
+        <button className='border rounded bg-[#213a57] text-white pl-2 pr-2' onClick={() => setCurrentPage((prev) => (currentrecipes.length === itemsPerPage ? prev + 1 : prev))} disabled={currentrecipes.length < itemsPerPage}>
           Next
         </button>
       </div>

@@ -18,9 +18,9 @@ interface Meal {
 }
 
 interface Meals {
-    morning: Meal | null;
-    lunch: Meal | null;
-    dinner: Meal | null;
+    Morning: Meal | null;
+    Lunch: Meal | null;
+    Dinner: Meal | null;
 }
 
 function Home() {
@@ -35,12 +35,12 @@ function Home() {
     });
 
     const [meals, setMeals] = useState<Meals>({
-        morning: null,
-        lunch: null,
-        dinner: null,
+        Morning: null,
+        Lunch: null,
+        Dinner: null,
     });
 
-    const MEAL_KEYS = ['morning', 'lunch', 'dinner'] as const;
+    const MEAL_KEYS = ['Morning', 'Lunch', 'Dinner'] as const;
     const LAST_UPDATED_KEY = 'lastUpdated';
     const currentTimestamp = Date.now();
 
@@ -90,21 +90,21 @@ function Home() {
             <div className="mt-4">
                 <p>Your meals for today</p>
             </div>
-            {meals.morning && meals.lunch && meals.dinner ? (
+            {meals.Morning && meals.Lunch && meals.Dinner ? (
                 <div className="flex flex-row space-x-8 mt-4">
                     {MEAL_KEYS.map((mealType) => {
                         const meal = meals[mealType];
                         return (
                             meal && (
-                                <div key={mealType} className="flex flex-col border-2 hover:shadow-md rounded p-30 items-center">
-                                    <h2 className="font-medium text-black text-3xl text-center">{mealType}</h2>
+                                <div key={mealType} className="flex flex-col  border-2 hover:shadow-md rounded-lg p-30 items-center">
+                                    <h2 className="font-medium ml-5 mr-5 mt-2 text-black text-3xl text-center">{mealType}</h2>
                                     <img
                                         onClick={() => navigate({ to: "/$recipesId", params: { recipesId: meal.id } })}
                                         className="h-24 w-24 cursor-pointer"
                                         src={meal.image}
                                         alt={meal.name}
                                     />
-                                    <p className="mt-2 text-center">{meal.name}</p>
+                                    <p className="mt-2 mb-2 ml-2 mr-2 text-center">{meal.name}</p>
                                 </div>
                             )
                         );
