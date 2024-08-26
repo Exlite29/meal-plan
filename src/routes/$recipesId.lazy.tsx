@@ -31,7 +31,7 @@ function Recipe() {
             <div className="flex h-screen justify-center mt-20 gap-10">
 
 
-                <img className="h-1/2 left-0" src={recipe.image} alt={recipe.name} />
+                <img className="h-1/2 left-20" src={recipe.image} alt={recipe.name} />
 
                 <div className="gap-8">
                     <div>

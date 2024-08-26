@@ -17,7 +17,7 @@ function recipes() {
   });
 
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 8;
 
   const currentrecipes = useMemo(() => {
     if (!data) return [];
@@ -32,9 +32,9 @@ function recipes() {
 
   return (
     <div>
-      <ul className="grid grid-cols-5 gap-4">
+      <ul className="grid grid-cols-4 items-center gap-4">
         {currentrecipes.map((recipe: { id: number; image: string; name: string }) => (
-          <li className="flex flex-col items-center" key={recipe.id}>
+          <li className="flex flex-col ml-10 mr-10 items-center" key={recipe.id}>
 
             <div className="flex justify-center">
               <img
